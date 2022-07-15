@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+            width: 100px;
+        }
+
+        .block {
+            position: absolute;
+            left: 0;
+            bottom: 500px;
+            height: 100%;
+            width: 100%;
+            transition: 2s linear;
+        }
+
+        .detect {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 30px;
+            border: 1px solid black;
+        }
+
+        .blockMain {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 30px;
+            background-color: black;
+        }
+
+        .long {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 10px;
+            height: 500px;
+            transform: translateX(-50%);
+            z-index: -1;
+            background-color: rgba(0,0,0,0.8);
+            transition: 1s linear;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="detect"></div>
+    <div class="block">
+        <div class="blockMain"></div>
+        <div class="long"></div>
+    </div>
+</div>
+
+<script>
+    const block = document.querySelector('.block')
+    window.addEventListener('keydown', (e)=>{
+        block.style.bottom = 0
+        if (e.code === 'Space') {
+            block.style.transitionDuration = '0'
+            block.style.bottom = '50px'
+            block.children[1].style.height = '0'
+        }
+    })
+
+</script>
+</body>
+</html>
